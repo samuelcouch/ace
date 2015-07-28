@@ -9,8 +9,10 @@ import (
 	"time"
 )
 
-var port int
-var path string
+var (
+	port int
+	path string
+)
 
 var names = []string{
 	"Serena Williams",
