@@ -10,6 +10,7 @@ import (
 )
 
 var port int
+var path string
 
 var names = []string{
 	"Serena Williams",
@@ -22,6 +23,7 @@ var names = []string{
 func init() {
 	rand.Seed(time.Now().UTC().UnixNano())
 	flag.IntVar(&port, "p", 3000, "The port to run serve up your files on.")
+	flag.StringVar(&path, "d", ".", "The directory to serve up")
 }
 
 func main() {
@@ -31,15 +33,15 @@ func main() {
 
 	fmt.Printf("Move aside %v! We're serving up aces on port %v\n", name, port)
 
-	err := AceServe(port)
+	err := AceServe(port, path)
 
 	if err != nil {
 		log.Fatalln(err)
 	}
 }
 
-func AceServe(port int) error {
+func AceServe(port int, path string) error {
 	host := fmt.Sprintf("localhost:%v", port)
 
-	return http.ListenAndServe(host, http.FileServer(http.Dir(".")))
+	return http.ListenAndServe(host, http.FileServer(http.Dir(path)))
 }
