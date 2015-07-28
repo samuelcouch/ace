@@ -10,17 +10,16 @@ import (
 )
 
 var (
-	port int
-	path string
+	port  int
+	path  string
+	names = []string{
+		"Serena Williams",
+		"Roger Federer",
+		"Andy Murray",
+		"Maria Sharapova",
+		"Rafael Nadal",
+	}
 )
-
-var names = []string{
-	"Serena Williams",
-	"Roger Federer",
-	"Andy Murray",
-	"Maria Sharapova",
-	"Rafael Nadal",
-}
 
 func init() {
 	rand.Seed(time.Now().UTC().UnixNano())
