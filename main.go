@@ -19,10 +19,12 @@ var names = []string{
 	"Rafael Nadal",
 }
 
-func main() {
+func init() {
 	rand.Seed(time.Now().UTC().UnixNano())
-
 	flag.IntVar(&port, "p", 3000, "The port to run serve up your files on.")
+}
+
+func main() {
 	flag.Parse()
 
 	name := names[rand.Intn(len(names))]
