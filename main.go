@@ -23,19 +23,16 @@ var (
 
 func init() {
 	rand.Seed(time.Now().UTC().UnixNano())
-	flag.IntVar(&port, "p", 3000, "The port to run serve up your files on.")
+	flag.IntVar(&port, "p", 3000, "The port to serve your files on")
 	flag.StringVar(&path, "d", ".", "The directory to serve up")
 }
 
 func main() {
 	flag.Parse()
-
 	name := names[rand.Intn(len(names))]
 
 	fmt.Printf("Move aside %v! We're serving up aces on port %v\n", name, port)
-
 	err := AceServe(port, path)
-
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -43,6 +40,5 @@ func main() {
 
 func AceServe(port int, path string) error {
 	host := fmt.Sprintf("localhost:%v", port)
-
 	return http.ListenAndServe(host, http.FileServer(http.Dir(path)))
 }
