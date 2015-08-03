@@ -17,4 +17,3 @@ From the directory where you want to serve up files from simply call
 ```shell
 ace -p 3456 -d ~/some/other/directory
 ```
-
